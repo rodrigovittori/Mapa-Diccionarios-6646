@@ -1,8 +1,20 @@
-# [M5.L1] - Actividad #3: "Bucle Principal"
+# [M5.L1] - Actividad #4: "Transición"
 
-# Creamos bucle principal
-# Nota: Por ahora sólo mostraremos nuestra habitación actual
-#       y aquellas a las que podemos acceder desde "aquí"
+# Implementamos desplazamiento entre habitaciones
+# Agregamos condición para terminar el bucle principal
+
+"""
+Paso 1) Pedir habitación destino con input()
+
+Paso 2) Verificar que la opción sea válida
+        > Si es válida, nos movemos a esa habitación
+        > SINO, mostramos un mensaje de error
+            > importamos sleep para agregar pausas
+            
+Paso 3) Agregar condición para que cuando lleguemos a la Salida finalice el Bucle Principal
+"""
+
+from time import sleep # Para pausas dramáticas
 
 mapa = {
         # ACTUALMENTE mapa es un diccionario donde cada clave 
@@ -39,6 +51,29 @@ while (True): # To-do: Agregar condición para salir del bucle
     for habitacion_contigua in mapa[habitacion_actual]:
         print("> ", habitacion_contigua)
 
-    # Agregamos un input() para evitar un bucle infinito...
-    print("En la próxima tarea pediremos al jugador que elija hacia que habitación avanzar...")
-    input("Presione [Enter] para continuar...")
+    ########################################################################
+    # SOLICITAR HABITACIÓN DESTINO:
+    habitacion_destino = input("\n ¿A que habitacion iras ahora?: ")
+
+    if (habitacion_destino not in mapa[habitacion_actual]):
+        # Si la habitación elegida por el usuario NO está en la lista asignada a mi clave actual...
+        print("¡No puedes hacer eso!, \"", habitacion_destino, "\" NO es accesible desde aquí.")
+        sleep(2)
+        continue
+
+    # Condición para "terminar" el juego:
+    elif (habitacion_destino == "Salida"):
+        habitacion_actual = "Salida"
+        print("¡Eres libre!")
+        sleep(2)
+        break
+
+    else:
+        # Si la habitacion ES válida y NO es la salida: cambiamos de habitación
+        habitacion_actual = habitacion_destino
+
+####################################################################
+# FIN DE BUCLE PRINCIPAL
+
+print("\n===================================")
+print("\n > FIN DEL JUEGO <")
