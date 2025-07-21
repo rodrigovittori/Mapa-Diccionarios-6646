@@ -1,8 +1,8 @@
-# [M5.L1] - Actividad #2: "Habitaciones"
+# [M5.L1] - Actividad #3: "Bucle Principal"
 
-# Creamos diccionario que representa el mapa a recorrer
-
-# NOTA: La actividad Nº 1 no se incluye ya que fue sólo una demo
+# Creamos bucle principal
+# Nota: Por ahora sólo mostraremos nuestra habitación actual
+#       y aquellas a las que podemos acceder desde "aquí"
 
 mapa = {
         # ACTUALMENTE mapa es un diccionario donde cada clave 
@@ -19,3 +19,26 @@ mapa = {
         'Boss'              : ['4', 'Salida'],
         'Salida'            : ['Boss']
         }
+
+####################################################################
+# DECLARACIÓN DE VARIABLES
+
+# Paso 1) Seteamos habitación inicial ("Spawn")
+habitacion_actual = "Spawn"
+
+####################################################################
+# BUCLE PRINCIPAL DE JUEGO:
+
+while (True): # To-do: Agregar condición para salir del bucle
+    # Mostramos habitación actual: 
+    print("\n===================================")
+    print(" Te encuentras en la habitación:", habitacion_actual)
+
+    # Mostramos habitaciones disponibles/accesibles:
+    print("\n Puedes ir a: ")
+    for habitacion_contigua in mapa[habitacion_actual]:
+        print("> ", habitacion_contigua)
+
+    # Agregamos un input() para evitar un bucle infinito...
+    print("En la próxima tarea pediremos al jugador que elija hacia que habitación avanzar...")
+    input("Presione [Enter] para continuar...")
